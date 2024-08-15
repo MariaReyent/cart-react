@@ -13,7 +13,7 @@ function App() {
 
   function numberOfItems(id) {
     const existingItem = cartItem.find((item) => item.id === id);
-    return existingItem;
+    return console.log(existingItem);
   }
 
   const router = createBrowserRouter([

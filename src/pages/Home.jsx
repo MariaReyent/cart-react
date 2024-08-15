@@ -19,7 +19,7 @@ function Home({ handleAddToCart, numberOfItems }) {
             <Card
               clothing={clothing}
               key={clothing.id}
-              handleAddToCart={() => handleAddToCart(clothing.id)}
+              handleAddToCart={handleAddToCart}
               numberOfItems={() => numberOfItems(clothing.id)}
               id={clothing.id}
             />

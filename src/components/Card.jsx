@@ -6,10 +6,7 @@ function Card({ clothing, handleAddToCart, numberOfItems }) {
       <div className="cardOtline">
         <div className="productHeader">
           <div className="cardName">{clothing.name}</div>
-          <button
-            className="addToCartBtn"
-            onClick={() => handleAddToCart(clothing.id)}
-          >
+          <button className="addToCartBtn" onClick={handleAddToCart}>
             ADD TO CART
           </button>
           <button onClick={() => numberOfItems(clothing.id)}>
