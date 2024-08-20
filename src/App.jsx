@@ -2,18 +2,30 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import CartPage from "./pages/CartPage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
+  const [added, setAdded] = useState(false);
 
   function handleAddToCart(item) {
-    return setCartItem((prevI) => [...prevI, item]);
+    setAdded((prevAdded) => ({
+      ...prevAdded,
+      [item.id]: true,
+    }));
+    return setCartItem((prevI) => [...prevI, { ...item, quantity: 1 }]);
   }
 
   function numberOfItems(id) {
-    const existingItem = cartItem.find((item) => item.id === id);
-    return console.log(existingItem);
+    setCartItem((prevI) => {
+      return prevI.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity ? item.quantity + 1 : 1 };
+        } else {
+          return item;
+        }
+      });
+    });
   }
 
   const router = createBrowserRouter([
@@ -21,8 +33,10 @@ function App() {
       path: "/",
       element: (
         <Home
-          handleAddToCart={() => handleAddToCart()}
-          numberOfItems={numberOfItems}
+          cartItem={cartItem}
+          added={added}
+          handleAddToCart={(item) => handleAddToCart(item)}
+          numberOfItems={(id) => numberOfItems(id)}
         />
       ),
     },
@@ -30,18 +44,24 @@ function App() {
       path: "/detail/:id",
       element: (
         <Detail
-          handleAddToCart={() => handleAddToCart()}
-          numberOfItems={numberOfItems}
+          handleAddToCart={(item) => handleAddToCart(item)}
+          numberOfItems={(id) => numberOfItems(id)}
         />
       ),
     },
     {
       path: "/cart",
-      element: <CartPage />,
+      element: (
+        <CartPage
+          cartItem={cartItem}
+          added={added}
+          numberOfItems={(id) => numberOfItems(id)}
+        />
+      ),
     },
   ]);
-  console.log(cartItem);
 
+  console.log(cartItem);
   return (
     <>
       <RouterProvider router={router} />

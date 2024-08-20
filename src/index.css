@@ -1,30 +1,46 @@
 body{
   margin:0;
+  background-color: rgb(211, 203, 193);
 }
 .cartImg{
     width:4rem;
     border-radius: 70px;
+    position: relative;
+    margin-right: 5rem;
+    margin-top:1rem;
 }
 .home{
    display: flex;
    justify-content: space-between;
   align-items: center;
-   background-color: rebeccapurple;
+   background-color: rgb(11, 1, 22);
    padding:1rem;
 }
 
+.detail{
+  display: flex;
+  align-items:center ;
+  justify-content: center;
+  flex-direction: column;
+  padding:10px;
+
+}
 .homeHeader{
   color:white;
  font-size: 2rem;
  text-decoration: none;
+  margin-left: 10rem;
  
+}
+a {
+  text-decoration: none;
 }
 
 .mainGrid{
   display: grid;
   grid-template-columns: repeat(2, minmax(100px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 4rem;
 
 }
 
@@ -33,19 +49,52 @@ body{
   flex-direction: column;
   justify-items: center;
   align-items: center;
+  
 }
 
 .productImg{
- height: 95%;
- width: 80%;
+ height:20rem;
+ width: 35rem;
+ display: flex;
+ align-items:center;
+ justify-content: center;
+ margin-bottom: 2rem;
+ transition: transform .2s ;
+}
 
+.productImg:hover{
+  transform: scale(1.2);
+  
+}
+.cartQuantity{
+  color: white;
+  position: absolute;
+  margin-left: 20px;;
+  background-color:rgb(24, 2, 28);
+  border:1px solid white;
+  width: 30px;
+  text-align: center;
+  border-radius:50%;
+  top:17px;
+
+}
+
+.buttonsForProduct{
+  display: flex;
+  flex-direction: row;
+  
 }
 .cardName{
 
   margin:1rem;
   font-size: 30px;
-  color:rgb(25, 12, 35);
+  color:rgb(11, 1, 16);
 
+}
+.detailImg{
+  
+  height:25rem;
+  width: 40rem;
 }
 
 .addToCartBtn{
@@ -53,13 +102,108 @@ body{
   align-items:center;
   justify-content: center;
   margin: 1rem;
-  background-color:rgb(129, 81, 159);
+  background-color:rgb(15, 14, 16);
+  outline: none;
+  color:aliceblue;
  }
 
+ .addQBtn{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  margin: 1rem;
+  background-color:rgb(15, 14, 16);
+  color:aliceblue;
+ }
 .productHeader{
   display: flex;
   justify-content: center;
 }
 
-  
+.goBackDetailBtn{
+  margin-top:1rem;
+  background-color:rgb(15, 14, 16);
+  color:aliceblue;
+  width: 8rem;
+  height:2rem;
+}
 
+.cartItemName{
+  color:black;
+}
+
+.cartItemsContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left:12rem;
+  margin-top:5rem;
+  background-color:aliceblue;
+  width:35rem;
+  padding:1rem;
+}
+
+
+  .cartImage{
+    height: 10rem;
+    width: 20rem;
+  }
+
+  .cartBackBtn{
+    background-color:rgb(15, 14, 16);
+    color:aliceblue;
+    width: 8rem;
+    height:2rem;
+    margin-bottom:1rem;
+
+  }
+  .cartBtn{
+    display:flex;
+    margin-top:1rem;
+    margin-left:2rem;
+  }
+  .cartItemName{
+    margin-left:1rem;
+   font-size: x-large;
+   font-weight:bold;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .mappedCartItems{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+.checkout{
+   display: flex;
+   flex-direction: column;
+   background-color:aliceblue;
+   margin-right:10rem;
+   margin-left:10rem;
+   width: 30rem;
+   height: 40rem;
+   margin-top:4rem;
+   
+}
+.checkTitle{
+  text-align: center;
+}
+
+.noItems{
+  display: flex;
+  background-color:aliceblue;
+  width:20rem;
+  height:10rem;
+  align-items:center;
+  justify-content: center;
+  margin-top:4rem;
+  margin-left:3rem;
+}
+
+.priceName{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+}

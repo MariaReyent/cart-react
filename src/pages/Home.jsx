@@ -2,7 +2,11 @@ import cart1 from "../assets/images/cart1.jpg";
 import { Link } from "react-router-dom";
 import { data } from "../data.js";
 import Card from "../components/Card.jsx";
-function Home({ handleAddToCart, numberOfItems }) {
+function Home({ handleAddToCart, numberOfItems, added, cartItem }) {
+  const totalQuantity = cartItem.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   return (
     <>
       <div className="home">
@@ -11,6 +15,7 @@ function Home({ handleAddToCart, numberOfItems }) {
         </Link>
         <Link to="/cart">
           <img src={cart1} className="cartImg" />
+          <div className="cartQuantity">{totalQuantity}</div>
         </Link>
       </div>
       <main className="mainGrid">
@@ -19,9 +24,10 @@ function Home({ handleAddToCart, numberOfItems }) {
             <Card
               clothing={clothing}
               key={clothing.id}
-              handleAddToCart={handleAddToCart}
+              handleAddToCart={() => handleAddToCart(clothing)}
               numberOfItems={() => numberOfItems(clothing.id)}
               id={clothing.id}
+              added={added[clothing.id]}
             />
           );
         })}

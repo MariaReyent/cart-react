@@ -1,17 +1,26 @@
 import { Link } from "react-router-dom";
 
-function Card({ clothing, handleAddToCart, numberOfItems }) {
+function Card({ clothing, handleAddToCart, numberOfItems, added }) {
   return (
     <>
       <div className="cardOtline">
-        <div className="productHeader">
-          <div className="cardName">{clothing.name}</div>
-          <button className="addToCartBtn" onClick={handleAddToCart}>
-            ADD TO CART
+        <div className="buttonsForProduct">
+          <div className="productHeader">
+            <div className="cardName">{clothing.name}</div>{" "}
+          </div>
+          <button
+            className="addToCartBtn"
+            onClick={() => handleAddToCart(clothing)}
+            disabled={added}
+          >
+            {added ? "Added" : "Add to cart"}
           </button>
-          <button onClick={() => numberOfItems(clothing.id)}>
+          {/* <button
+            onClick={() => numberOfItems(clothing.id)}
+            className="addQBtn"
+          >
             Add Quantity
-          </button>
+          </button> */}
         </div>
 
         <Link to={`detail/${clothing.id}`}>
